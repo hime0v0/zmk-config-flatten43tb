@@ -1,0 +1,22 @@
+if SHIELD_FLATTEN43TB_R
+
+config ZMK_KEYBOARD_NAME
+    default "flatten43tb_R"
+
+config ZMK_SPLIT
+    default y
+
+config ZMK_SPLIT_ROLE_CENTRAL
+    default y
+
+endif
+
+if SHIELD_FLATTEN43TB_L
+
+config ZMK_KEYBOARD_NAME
+    default "flatten43tb_L"
+
+config ZMK_SPLIT
+    default y
+
+endif
