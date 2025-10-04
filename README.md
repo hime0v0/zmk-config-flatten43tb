@@ -7,6 +7,7 @@
 - Xiao nRF52840（Xiao BLE）を採用した技適対応のワイヤレスキーボード
 - Bluetooth接続（最大5台）とType-Cケーブルによる有線接続が可能
 - `Cherry MXスイッチ`と`ロープロファイルスイッチ`（Choc V1, Choc V2_ガイドピン無し）に対応
+- キースイッチのホットスワップにも対応
 - 500mAhバッテリーを採用しながら薄型デザインを実現
 - 左側キーボードにロータリーエンコーダを搭載
 
@@ -50,6 +51,13 @@
   - [`ZMKファームウェアをビルドしてキーマップを変更する`と`ZMK Studioでキーマップを変更する`を併用することは非推奨](#zmkファームウェアをビルドしてキーマップを変更するとzmk-studioでキーマップを変更するを併用することは非推奨)
   - [左側キーボードでキー入力ができなくなった](#左側キーボードでキー入力ができなくなった)
   - [ロータリーエンコーダを取り外してキースイッチを取り付け可能](#ロータリーエンコーダを取り外してキースイッチを取り付け可能)
+- [現在のレイヤーをLEDの色で判別できるようにする](#現在のレイヤーをledの色で判別できるようにする)
+- [バッテリー残量をLEDで確認する](#バッテリー残量をledで確認する)
+- [接続状況を確認する](#接続状況を確認する)
+- [`ZMKファームウェアをビルドしてキーマップを変更する`と`ZMK Studioでキーマップを変更する`を併用することは非推奨](#zmkファームウェアをビルドしてキーマップを変更するとzmk-studioでキーマップを変更するを併用することは非推奨-1)
+- [左側キーボードでキー入力ができなくなった](#左側キーボードでキー入力ができなくなった-1)
+- [ロータリーエンコーダを取り外してキースイッチを取り付け可能](#ロータリーエンコーダを取り外してキースイッチを取り付け可能-1)
+- [キーボードがチャタリングするときの対処方法](#キーボードがチャタリングするときの対処方法)
 
 
 ## ZMKファームウェアをビルドしてキーマップを変更する
@@ -189,3 +197,104 @@
 
 - ロータリーエンコーダをハンダ付けしている箇所には、キーソケット（CherryMX, Choc V1/V2）もハンダ付け済みです
 - はんだごてなどでロータリーエンコーダを取り外せばキースイッチを装着可能です
+
+## 現在のレイヤーをLEDの色で判別できるようにする
+
+- 利用中のレイヤーに応じてLEDの表示色を出し分けて判別しやすくする機能がある
+- 本機能を`ON/OFF`したいときは以下のファイルを修正すること
+  - [boards/shields/flatten43tb/flatten43tb_R.conf](boards/shields/flatten43tb/flatten43tb_R.conf)
+  - `ON`にしたいとき:
+    - `CONFIG_RGBLED_WIDGET_SHOW_LAYER_COLORS=y`
+  - `OFF`にしたいとき:
+    - `CONFIG_RGBLED_WIDGET_SHOW_LAYER_COLORS=n`
+- 色を変更したい場合は`CONFIG_RGBLED_WIDGET_LAYER_*_COLOR`の値を変更する
+  - [boards/shields/flatten43tb/flatten43tb_R.conf](boards/shields/flatten43tb/flatten43tb_R.conf)
+  - 色と値の組み合わせ:
+
+    | Color | Value |
+    | -- | -- |
+    | LED非表示 | 0 |
+    | 🔴 | 1 |
+    | 🟢 | 2 |
+    | 🟡 | 3 |
+    | 🔵 | 4 |
+    | 🟣 | 5 |
+    | 🔵（Cyan） | 6 |
+    | ⚪（White） |  7 |
+
+## バッテリー残量をLEDで確認する
+
+- `&ind_bat`を割り当てたキーを入力することで確認可能
+
+  > `Layer: 6`の左側キーボードに割当済み
+
+- LED表示色とバッテリー残量
+
+  | LED Color | バッテリー残量 |
+  | -- | -- |
+  | 🟢 | 60% |
+  | 🟡 | 20% |
+  | 🔴 | 10% |
+
+- バッテリー残量の表示設定を変更したいときは以下のファイルを修正すること
+  - [boards/shields/flatten43tb/flatten43tb_L.conf](boards/shields/flatten43tb/flatten43tb_L.conf)
+  - [boards/shields/flatten43tb/flatten43tb_R.conf](boards/shields/flatten43tb/flatten43tb_R.conf)
+  - `Green`として表示するバッテリー残量を変更したいとき:
+    - `CONFIG_RGBLED_WIDGET_BATTERY_LEVEL_HIGH`の値を書き換える
+  - `Yellow`として表示するバッテリー残量を変更したいとき:
+    - `CONFIG_RGBLED_WIDGET_BATTERY_LEVEL_LOW`の値を書き換える
+  - `Red`として表示するバッテリー残量を変更したいとき:
+    - `CONFIG_RGBLED_WIDGET_BATTERY_LEVEL_CRITICAL`の値を書き換える
+
+## 接続状況を確認する
+
+- `&ind_con`を割り当てたキーを入力することで確認可能
+
+  > `Layer: 6`の左側キーボードに割当済み
+
+- LED表示色とBluetooth接続状況
+
+  | LED Color | Bluetooth接続状況 |
+  | -- | -- |
+  | 🔵 | Bluetooth接続中 |
+  | 🔴 | Bluetooth未接続 |
+
+## `ZMKファームウェアをビルドしてキーマップを変更する`と`ZMK Studioでキーマップを変更する`を併用することは非推奨
+
+- ZMKファームウェアをビルドしてキーマップ変更したのに、ZMK Studioでのキーマップが優先されるケースがあるため
+- キーマップがうまく書き換えできなくなった場合は、[6. ファームウェアをキーボードに書き込む](#6-ファームウェアをキーボードに書き込む)で`settings_reset-seeeduino_xiao_ble-zmk.uf2`を書き込む手順を含めて実行すると解消可能です
+
+## 左側キーボードでキー入力ができなくなった
+
+- 左右キーボード間のペアリングが失敗している状態です
+- [6. ファームウェアをキーボードに書き込む](#6-ファームウェアをキーボードに書き込む)で`settings_reset-seeeduino_xiao_ble-zmk.uf2`を書き込む手順を含めて実行すると解消可能です
+- `右側キーボード -> 左側キーボード`の順番で実行すると良いです
+
+## ロータリーエンコーダを取り外してキースイッチを取り付け可能
+
+- ロータリーエンコーダをハンダ付けしている箇所には、キーソケット（CherryMX, Choc V1/V2）もハンダ付け済みです
+- はんだごてなどでロータリーエンコーダを取り外せばキースイッチを装着可能です
+
+## キーボードがチャタリングするときの対処方法
+
+- 電波干渉によりチャタリング（想定外に何度も入力されてしまう）が生じていると考えられます
+- 以下のファイルを修正することで、ソフトウェア側のデバウンスを調整することで対処可能です
+  - [boards/shields/flatten43tb/flatten43tb_R.conf](boards/shields/flatten43tb/flatten43tb_R.conf)
+  - [boards/shields/flatten43tb/flatten43tb_L.conf](boards/shields/flatten43tb/flatten43tb_L.conf)
+- 上述のファイルに以下の内容を追記する
+
+  ```text
+  CONFIG_ZMK_KSCAN_DEBOUNCE_PRESS_MS=10
+  CONFIG_ZMK_KSCAN_DEBOUNCE_RELEASE_MS=10
+  ```
+
+  - 値を大きくするほどチャタリングを防止できますが、キー入力時に遅延を感じるようになります
+
+- 公式ドキュメント: https://zmk.dev/docs/features/debouncing
+
+  > `CONFIG_ZMK_KSCAN_DEBOUNCE_PRESS_MS`: 未記載の場合は自動的に`5`として動作する
+  >
+  > `CONFIG_ZMK_KSCAN_DEBOUNCE_RELEASE_MS`: 未記載の場合は自動的に`5`として動作する
+  >
+
+- 参考例: https://x.com/search?q=CONFIG_ZMK_KSCAN_DEBOUNCE_RELEASE_MS
