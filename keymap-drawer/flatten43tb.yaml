@@ -2,44 +2,44 @@ layout: {zmk_keyboard: flatten43tb}
 layers:
   default:
   - Q
-  - W
-  - E
-  - R
-  - T
-  - Y
+  - L
   - U
-  - {t: I, h: SCROLL}
-  - O
-  - P
-  - A
-  - S
-  - D
+  - ','
+  - .
   - F
-  - G
+  - W
+  - {t: R, h: SCROLL}
+  - Y
+  - P
+  - E
+  - I
+  - A
+  - O
+  - '-'
   - Sft+Gui+S
   - '-'
-  - H
-  - J
   - K
-  - L
-  - ''''
-  - {t: Z, h: LEFT SHIFT}
+  - T
+  - N
+  - S
+  - H
+  - Z
   - X
   - C
   - V
-  - B
-  - ':'
   - ;
-  - N
-  - M
-  - ','
-  - .
+  - ':'
   - /
+  - G
+  - D
+  - M
+  - J
+  - B
   - LCTRL
   - LEFT WIN
   - LEFT ALT
-  - {t: '&to_layer_0 INT_HENKAN', h: '6'}
-  - {t: SPACE, h: NUM}
+  - BACKSPACE
+  - LEFT GUI
   - {t: '&to_layer_0 INT_MUHENKAN', h: ARROW}
   - BACKSPACE
   - {t: ENTER, h: FUNCTION}
@@ -127,7 +127,7 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {type: held}
+  - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -302,7 +302,7 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {type: held}
+  - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
