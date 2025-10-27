@@ -126,10 +126,10 @@
 
         default_layer {
             bindings = <
-&kp Q      &kp L         &kp U         &kp COMMA      &kp PERIOD                                                       &kp F        &kp W  &lt 5 R  &kp Y  &kp P
-&kp E      &kp I         &kp A         &kp O          &kp MINUS      &kp LS(LG(S))                      &kp MINUS      &kp K        &kp T  &kp N    &kp S  &kp H
-&kp Z      &kp X         &kp C         &kp V          &kp SEMICOLON  &kp COLON                          &kp SLASH      &kp G        &kp D  &kp M    &kp J  &kp B
-&kp LCTRL  &kp LEFT_WIN  &kp LEFT_ALT  &kp BACKSPACE  &kp LEFT_GUI   &lt_to_layer_0 3 INT_MUHENKAN      &kp BACKSPACE  &lt 1 ENTER                         &kp DEL
+&kp Q       &kp L               &kp U            &kp COMMA         &kp PERIOD                                                                 &kp F        &kp W              &lt 5 R          &kp Y                &kp P
+&kp E       &mt LEFT_CONTROL I  &mt LEFT_ALT A   &mt LEFT_SHIFT O  &kp MINUS            &kp TILDE                          &kp SLASH          &kp K        &mt RIGHT_SHIFT T  &mt RIGHT_ALT N  &mt RIGHT_CONTROL S  &kp H
+&kp Z       &kp X               &kp C            &kp V             &kp SEMICOLON        &kp LEFT_BRACKET                   &kp RIGHT_BRACKET  &kp G        &kp D              &kp M            &kp J                &kp B
+&kp ESCAPE  &kp C_VOLUME_DOWN   &kp C_VOLUME_UP  &lt 1 BACKSPACE   &mt LEFT_GUI RETURN  &lt_to_layer_0 3 INT_MUHENKAN      &mt RIGHT_GUI TAB  &lt 2 SPACE                                                           &to 6
             >;
 
             sensor-bindings = <&mouse_wheel_scroll SCRL_DOWN SCRL_UP>;
