@@ -72,18 +72,10 @@
         };
     };
 
-/ {
-  behaviors {
-    mt_tap_hold: mod_tap {
-      compatible = "zmk,behavior-hold-tap";
-      label = "MT_TAP_HOLD";
-      #binding-cells = <2>;
-      tapping-term-ms = <150>;   // タップとホールドの判定時間（短めが高速タイピング向け）
-      flavor = "tap-preferred";  // ← タップ優先設定！
-      bindings = <&kp>, <&kp>;
+    / {
+        behaviors {
+        };
     };
-  };
-};
 
     macros {
         to_layer_0: to_layer_0 {
@@ -124,10 +116,10 @@
 
         default_layer {
             bindings = <
-&kp Q       &kp L               &kp U            &kp COMMA         &kp PERIOD                                                                 &kp F        &kp W              &lt 5 R          &kp Y                &kp P
-&kp E       &mt LEFT_CONTROL I  &mt LEFT_ALT A   &mt LEFT_SHIFT O  &kp MINUS            &kp TILDE                          &kp SLASH          &kp K        &mt RIGHT_SHIFT T  &mt RIGHT_ALT N  &mt RIGHT_CONTROL S  &kp H
-&kp Z       &kp X               &kp C            &kp V             &kp SEMICOLON        &kp LEFT_BRACKET                   &kp RIGHT_BRACKET  &kp G        &kp D              &kp M            &kp J                &kp B
-&kp ESCAPE  &kp C_VOLUME_DOWN   &kp C_VOLUME_UP  &lt 1 BACKSPACE   &mt LEFT_GUI RETURN  &lt_to_layer_0 3 INT_MUHENKAN      &mt RIGHT_GUI TAB  &lt 2 SPACE                                                           &mo 6
+&kp Q       &kp L               &kp U            &kp COMMA         &kp PERIOD                                                   &kp F        &kp W              &lt 5 R          &kp Y                &kp P
+&kp E       &mt LEFT_CONTROL I  &mt LEFT_ALT A   &mt LEFT_SHIFT O  &kp MINUS        &kp TILDE                &kp SLASH          &kp K        &mt RIGHT_SHIFT T  &mt RIGHT_ALT N  &mt RIGHT_CONTROL S  &kp H
+&kp Z       &kp X               &kp C            &kp V             &kp SEMICOLON    &kp LEFT_BRACKET         &kp RIGHT_BRACKET  &kp G        &kp D              &kp M            &kp J                &kp B
+&kp ESCAPE  &kp C_VOLUME_DOWN   &kp C_VOLUME_UP  &kp APOS          &lt 1 BACKSPACE  &mt LEFT_GUI RETURN      &mt RIGHT_GUI TAB  &lt 2 SPACE                                                           &mo 6
             >;
 
             sensor-bindings = <&mouse_wheel_scroll SCRL_DOWN SCRL_UP>;
