@@ -72,11 +72,6 @@
         };
     };
 
-    / {
-        behaviors {
-        };
-    };
-
     macros {
         to_layer_0: to_layer_0 {
             compatible = "zmk,behavior-macro-one-param";
@@ -108,6 +103,15 @@
             bindings = <&msc>, <&msc>;
 
             tap-ms = <20>;
+        };
+
+        mt_tap_hold: mod_tap {
+            compatible = "zmk,behavior-hold-tap";
+            label = "MT_TAP_HOLD";
+            #binding-cells = <2>;
+            tapping-term-ms = <150>;   // タップとホールドの判定時間
+            flavor = "tap-preferred";  // ← タップ優先設定！
+            bindings = <&kp>, <&kp>;
         };
     };
 
