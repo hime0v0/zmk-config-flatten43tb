@@ -34,13 +34,13 @@
 &mmv {
     delay-ms = <20>;
     trigger-period-ms = <5>;
-    time-to-max-speed-ms = <100>;
-    acceleration-exponent = <2>;
+    time-to-max-speed-ms = <50>;
+    acceleration-exponent = <3>;
 };
 
 &msc {
     delay-ms = <3>;
-    trigger-period-ms = <3>;
+    trigger-period-ms = <10>;
     time-to-max-speed-ms = <100>;
     acceleration-exponent = <0>;
 };
@@ -71,6 +71,19 @@
             key-positions = <19 18>;
         };
     };
+
+/ {
+  behaviors {
+    mt_tap_hold: mod_tap {
+      compatible = "zmk,behavior-hold-tap";
+      label = "MT_TAP_HOLD";
+      #binding-cells = <2>;
+      tapping-term-ms = <150>;   // タップとホールドの判定時間（短めが高速タイピング向け）
+      flavor = "tap-preferred";  // ← タップ優先設定！
+      bindings = <&kp>, <&kp>;
+    };
+  };
+};
 
     macros {
         to_layer_0: to_layer_0 {
