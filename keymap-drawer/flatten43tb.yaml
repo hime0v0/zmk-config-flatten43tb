@@ -38,9 +38,9 @@ layers:
   - ESCAPE
   - VOLUME DOWN
   - VOLUME UP
+  - ''''
   - {t: BACKSPACE, h: FUNCTION}
   - {t: RETURN, h: LEFT GUI}
-  - {t: '&to_layer_0 INT_MUHENKAN', h: ARROW}
   - {t: TAB, h: RIGHT GUI}
   - {t: SPACE, h: NUM}
   - '6'
@@ -82,8 +82,8 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {type: held}
   - {t: ▽, type: trans}
+  - {type: held}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -172,7 +172,7 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {type: held}
+  - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
