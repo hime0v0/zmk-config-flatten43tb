@@ -86,9 +86,9 @@
             compatible = "zmk,behavior-hold-tap";
             label = "LAYER_TAP_TO_0";
             bindings = <&mo>, <&to_layer_0>;
-
             #binding-cells = <2>;
             tapping-term-ms = <200>;
+            flavor = "hold-preferred";       // ←ホールド優先！
         };
 
         sensor_rotate_kp: sensor_rotate_kp {
@@ -109,12 +109,13 @@
             compatible = "zmk,behavior-hold-tap";
             label = "MT_TAP_HOLD";
             #binding-cells = <2>;
-            tapping-term-ms = <180>;   // タップとホールドの判定時間ゆったりめ
-            quick-tap-ms = <100>;    // 連続入力の救済
+            tapping-term-ms = <220>;  // タップとホールドの判定時間ゆったりめ
+            quick-tap-ms = <0>;  // 連続入力の救済
             flavor = "tap-unless-interrupted";  // 誤ホールド防止の定番
             // flavor = "tap-preferred";  // ← タップ優先設定を使うならこっち。コメントアウト中。
             bindings = <&kp>, <&kp>;
         };
+
     };
 
     keymap {
