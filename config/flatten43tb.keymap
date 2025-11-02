@@ -33,15 +33,15 @@
 
 &mmv {
     delay-ms = <20>;
-    trigger-period-ms = <5>;
-    time-to-max-speed-ms = <50>;
-    acceleration-exponent = <3>;
+    trigger-period-ms = <3>;
+    time-to-max-speed-ms = <30>;
+    acceleration-exponent = <4>;
 };
 
 &msc {
     delay-ms = <3>;
-    trigger-period-ms = <10>;
-    time-to-max-speed-ms = <150>;
+    trigger-period-ms = <15>;
+    time-to-max-speed-ms = <200>;
     acceleration-exponent = <0>;
 };
 
@@ -111,8 +111,8 @@
             #binding-cells = <2>;
             tapping-term-ms = <220>;  // タップとホールドの判定時間ゆったりめ
             quick-tap-ms = <0>;  // 連続入力の救済
-            flavor = "tap-unless-interrupted";  // 誤ホールド防止の定番
-            // flavor = "tap-preferred";  // ← タップ優先設定を使うならこっち。コメントアウト中。
+            // flavor = "tap-unless-interrupted";  // 誤ホールド防止の定番。コメントアウト中。
+            flavor = "tap-preferred";  // ← タップ優先設定を使うならこっち。
             bindings = <&kp>, <&kp>;
         };
 
